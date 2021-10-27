@@ -1,0 +1,140 @@
+{
+    "fileFormat": {
+    "charsetName": "UTF-8",
+    "fieldsEnclosedBy": "\"",
+    "fieldsDelimitedBy": ",",
+    "numberOfLinesToIgnore": 1
+  },
+  "objects": [
+  {
+        "connector": "AcmeCSVConnector",
+        "description": "",
+        "fullyQualifiedName": "Current_Country",
+        "label": "Current_Country",
+        "name": "Current_Country",
+        "fields": [
+        {
+            "description": "",
+            "fullyQualifiedName": "Current_Country.state",
+            "label": "state",
+            "name": "state",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        },
+		{
+            "description": "",
+            "fullyQualifiedName": "Current_Country.positive",
+            "label": "positive",
+            "name": "positive",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        },
+		{
+            "description": "",
+            "fullyQualifiedName": "Current_Country.negative",
+            "label": "negative",
+            "name": "negative",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        },
+        {
+            "description": "",
+            "fullyQualifiedName": "Current_Country.pending",
+            "label": "pending",
+            "name": "pending",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        },
+ {
+            "description": "",
+            "fullyQualifiedName": "Current_Country.date",
+            "label": "date",
+            "name": "date",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        },
+{
+            "description": "",
+            "fullyQualifiedName": "Current_Country.totalTestResults",
+            "label": "totalTestResults",
+            "name": "totalTestResults",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        },
+{
+            "description": "",
+            "fullyQualifiedName": "Current_Country.hospitalizedCurrently",
+            "label": "hospitalizedCurrently",
+            "name": "hospitalizedCurrently",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        },
+{
+            "description": "",
+            "fullyQualifiedName": "Current_Country.inIcuCurrently",
+            "label": "inIcuCurrently",
+            "name": "inIcuCurrently",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        },
+{
+            "description": "",
+            "fullyQualifiedName": "Current_Country.onVentilatorCurrently",
+            "label": "onVentilatorCurrently",
+            "name": "onVentilatorCurrently",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        },
+{
+            "description": "",
+            "fullyQualifiedName": "Current_Country.lastModified",
+            "label": "lastModified",
+            "name": "lastModified",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        },
+{
+            "description": "",
+            "fullyQualifiedName": "Current_Country.death",
+            "label": "death",
+            "name": "death",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        },
+{
+            "description": "",
+            "fullyQualifiedName": "Current_Country.hospitalized",
+            "label": "hospitalized",
+            "name": "hospitalized",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        }
+	
+     ]
+	}
+  ]
+}

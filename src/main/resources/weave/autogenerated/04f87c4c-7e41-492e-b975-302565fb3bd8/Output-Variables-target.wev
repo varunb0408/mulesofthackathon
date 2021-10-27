@@ -1,0 +1,4 @@
+%dw 2.0
+
+type auto_04f87c4c_7e41_492e_b975_302565fb3bd8_Output_Variables_target = Any
+

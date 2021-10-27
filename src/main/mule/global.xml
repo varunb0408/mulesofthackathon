@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:salesforce-analytics="http://www.mulesoft.org/schema/mule/salesforce-analytics" xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd
+http://www.mulesoft.org/schema/mule/salesforce-analytics http://www.mulesoft.org/schema/mule/salesforce-analytics/current/mule-salesforce-analytics.xsd">
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="c6db6037-8096-4b36-b3ed-d6fedfff8379" >
+		<http:request-connection host="${host_name}" />
+	</http:request-config>
+	<salesforce-analytics:salesforce-analytics-config name="Salesforce_Analytics_Configuation" doc:name="Salesforce Analytics Config" doc:id="14d00003-6b71-49e0-bfe6-d4d2cbff3a17" >
+		<salesforce-analytics:basic-connection username="${sf_username}" password="${sf_password}" securityToken="${sf_security_token}" url="https://${sf_url}/services/Soap/u/51.0"/>
+	</salesforce-analytics:salesforce-analytics-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="75ef6155-ef80-402e-8e2a-aaa0071897c0" file="dev.properties" />
+</mule>

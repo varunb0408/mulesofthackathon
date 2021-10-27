@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="mainFlow" doc:id="43fc86ce-6117-4352-b284-699cce096c4c" >
+		<scheduler doc:name="Scheduling daily  " doc:id="bff3b975-3744-4ecc-b2ed-f08802f6d61b" >
+			<scheduling-strategy >
+				<cron timeZone="UTC" expression="${scheduler_expression}"/>
+			</scheduling-strategy>
+		</scheduler>
+		<scatter-gather doc:name="processing dataset" doc:id="b1fbd80b-a775-4b3e-94f2-8f32c6852f0f" >
+			<route >
+				<flow-ref doc:name="calling country flow" doc:id="3bb89507-3ba1-4ad4-a800-8374e3479903" name="covid-country-dataset-flow" />
+			</route>
+			<route >
+				<flow-ref doc:name="calling state flow" doc:id="bb56c073-c6b2-4dec-8d9f-ed882ea75e93" name="covid-state-dataset-flow"/>
+			</route>
+		</scatter-gather>
+		<logger level="INFO" doc:name="logging after process" doc:id="5d07461c-c30e-4a20-a15e-4f9370f48adf" message="Process Completed"/>
+		<error-handler >
+			<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="4dff75e2-617e-4d77-b00e-7eab6ed6f200" type="ANY">
+				<ee:transform doc:name="Transform Message" doc:id="2cc3e3ff-378e-45c8-9909-fff63d877f76" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	'Error' : error.description
+}]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
+			</on-error-propagate>
+		</error-handler>
+	</flow>
+</mule>

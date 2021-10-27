@@ -1,0 +1,160 @@
+{
+    "fileFormat": {
+    "charsetName": "UTF-8",
+    "fieldsEnclosedBy": "\"",
+    "fieldsDelimitedBy": ",",
+    "numberOfLinesToIgnore": 1
+  },
+  "objects": [
+  {
+        "connector": "AcmeCSVConnector",
+        "description": "",
+        "fullyQualifiedName": "Current_States",
+        "label": "Current_States",
+        "name": "Current_States",
+        "fields": [
+        {
+            "description": "",
+            "fullyQualifiedName": "Current_States.state",
+            "label": "state",
+            "name": "state",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        },
+		{
+            "description": "",
+            "fullyQualifiedName": "Current_States.positive",
+            "label": "positive",
+            "name": "positive",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        },
+		{
+            "description": "",
+            "fullyQualifiedName": "Current_States.negative",
+            "label": "negative",
+            "name": "negative",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        },
+        {
+            "description": "",
+            "fullyQualifiedName": "Current_States.pending",
+            "label": "pending",
+            "name": "pending",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        },
+ {
+            "description": "",
+            "fullyQualifiedName": "Current_States.date",
+            "label": "date",
+            "name": "date",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        },
+{
+            "description": "",
+            "fullyQualifiedName": "Current_States.totalTestResults",
+            "label": "totalTestResults",
+            "name": "totalTestResults",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        },
+{
+            "description": "",
+            "fullyQualifiedName": "Current_States.hospitalizedCurrently",
+            "label": "hospitalizedCurrently",
+            "name": "hospitalizedCurrently",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        },
+{
+            "description": "",
+            "fullyQualifiedName": "Current_States.inIcuCurrently",
+            "label": "inIcuCurrently",
+            "name": "inIcuCurrently",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        },
+{
+            "description": "",
+            "fullyQualifiedName": "Current_States.onVentilatorCurrently",
+            "label": "onVentilatorCurrently",
+            "name": "onVentilatorCurrently",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        },
+{
+            "description": "",
+            "fullyQualifiedName": "Current_States.recovered",
+            "label": "recovered",
+            "name": "recovered",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        },
+{
+            "description": "",
+            "fullyQualifiedName": "Current_States.lastUpdateEt",
+            "label": "lastUpdateEt",
+            "name": "lastUpdateEt",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        },
+{
+            "description": "",
+            "fullyQualifiedName": "Current_States.dateModified",
+            "label": "dateModified",
+            "name": "dateModified",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        },
+{
+            "description": "",
+            "fullyQualifiedName": "Current_States.death",  
+            "label": "death",
+            "name": "death",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        },
+{
+            "description": "",
+            "fullyQualifiedName": "Current_States.hospitalized",  
+            "label": "hospitalized",
+            "name": "hospitalized",
+            "isSystemField": false,
+            "isUniqueId": false,
+            "isMultiValue": false,
+            "type": "Text"
+        }
+	
+     ]
+	}
+  ]
+}

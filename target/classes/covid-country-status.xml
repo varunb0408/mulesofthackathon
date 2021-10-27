@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:java="http://www.mulesoft.org/schema/mule/java"
+	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce" xmlns:salesforce-analytics="http://www.mulesoft.org/schema/mule/salesforce-analytics" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/salesforce-analytics http://www.mulesoft.org/schema/mule/salesforce-analytics/current/mule-salesforce-analytics.xsd
+http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/java http://www.mulesoft.org/schema/mule/java/current/mule-java.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd">
+	<sub-flow name="covid-country-dataset-flow" doc:id="04f87c4c-7e41-492e-b975-302565fb3bd8" >
+		<until-successful maxRetries="50" doc:name="Until Successful" doc:id="f425285a-b679-49d8-8adb-b98d8fd43671">
+			<http:request method="GET" doc:name="country info request" doc:id="455f3c9a-111f-4ff1-8f24-6ea2bae8b7ab" config-ref="HTTP_Request_configuration" path="${path_name_country}"/>
+		</until-successful>
+		<ee:transform doc:name="country response" doc:id="7e600768-c983-4388-b365-ab31c0a37da0">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<ee:transform doc:name="country dataset formatting" doc:id="3925a6f0-7848-4a4d-93ac-e4f07d291369" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+payload map(data,index)->{
+	
+	"date": data.date as String as Date{format:'yyyyMMdd'} as String {format:'yyyy-MM-dd'},
+    "state": data.state,
+    "positive": data.positive,
+    "negative": data.negative,
+    "pending": data.pending,
+    "totalTestResults": data.totalTestResults,
+    "hospitalizedCurrently": data.hospitalizedCurrently,     
+    "inIcuCurrently": data.inIcuCurrently,       
+    "onVentilatorCurrently": data.onVentilatorCurrently,                 
+    "lastModified": data.lastModified,       
+    "death": data.death,
+    "hospitalized": data.hospitalized
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<set-payload value="#[payload]" doc:name="storing dataset value" doc:id="5f60762f-4c71-47c6-9f9b-60f99797bdd3" />
+		<salesforce-analytics:upload-external-data-into-new-data-set-and-start-processing operation="OVERWRITE" doc:name="Upload external data into new data set and start processing" doc:id="a39f8cbf-141c-44ad-8b75-a7eb15f8899c" description="CovidTrackCountryDailyDataset" label="CovidTrackCountryDailyDatset" dataSetName="CovidTrackCountryDailyDatset" notificationSent="ALWAYS" notificationEmail="${notification_email}" config-ref="Salesforce_Analytics_Configuation" type="${mule.home}/apps/${app.name}/tmp/current_country.json" edgemartContainer="Developers_App"/>
+		<set-payload value="#[payload]" doc:name="after dataset" doc:id="de43a038-ec17-4f19-a93e-61cf829f905f" />
+	</sub-flow>
+</mule>
