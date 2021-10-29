@@ -46,7 +46,7 @@ payload map(data,index)->{
 			</ee:message>
 		</ee:transform>
 		<set-payload value="#[payload]" doc:name="storing dataset value" doc:id="5f60762f-4c71-47c6-9f9b-60f99797bdd3" />
-		<salesforce-analytics:upload-external-data-into-new-data-set-and-start-processing operation="OVERWRITE" doc:name="Upload external data into new data set and start processing" doc:id="a39f8cbf-141c-44ad-8b75-a7eb15f8899c" description="CovidTrackStateDailyDataset" label="CovidTrackStateDailyDataset" dataSetName="CovidTrackStateDailyDataset" edgemartContainer="Developers_App" notificationSent="ALWAYS" notificationEmail="${notification_email}" type="${mule.home}/apps/${app.name}/tmp/current_states.json" config-ref="Salesforce_Analytics_Configuation"/>
+		<salesforce-analytics:upload-external-data-into-new-data-set-and-start-processing operation="OVERWRITE" doc:name="Upload external data into new data set and start processing" doc:id="a39f8cbf-141c-44ad-8b75-a7eb15f8899c" description="CovidTrackStateDailyDataset" label="CovidTrackStateDailyDatset" dataSetName="CovidTrackStateDailyDatset" edgemartContainer="Developers_App" notificationSent="ALWAYS" notificationEmail="${notification_email}" type="${mule.home}/apps/${app.name}/tmp/current_states.json" config-ref="Salesforce_Analytics_Configuation"/>
 		<set-payload value="#[payload]" doc:name="after dataset" doc:id="de43a038-ec17-4f19-a93e-61cf829f905f" />
 	</sub-flow>
 </mule>

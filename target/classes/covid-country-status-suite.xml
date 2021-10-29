@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="covid-country-status-suite.xml" />
+	<munit:test name="covid-county-dataset-flow-test" doc:id="151ac91f-d241-41be-8740-06b9cdeeee90" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock Upload external data into new data set and start processing" doc:id="c0527145-8427-44e8-86e2-ecf0af10fd41" processor="salesforce-analytics:upload-external-data-into-new-data-set-and-start-processing">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="a39f8cbf-141c-44ad-8b75-a7eb15f8899c" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[readUrl('classpath://covidcountydatasetflowtest\mock_payload.dwl')]" encoding="UTF-8" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="7370972d-366a-4518-ba8f-4b2ebeaf8d9c" >
+				<munit:payload value="#[readUrl('classpath://covidcountydatasetflowtest\set-event_payload.dwl')]" encoding="UTF-8" />
+				<munit:attributes value="#[readUrl('classpath://covidcountydatasetflowtest\set-event_attributes.dwl')]" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to covid-county-dataset-flow" doc:id="602a855e-a10f-41cd-905d-1621222198c6" name="covid-country-dataset-flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="3aff45a1-a9b0-432f-ada1-847595b53142" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import covidcountydatasetflowtest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
